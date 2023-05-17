@@ -5,11 +5,23 @@ $numbers = range(1, 100);
 $symbol = ['!','?','<','>','&','%','@','&',];
 $upcase_letters = [];
 
+$password_length = $_GET['number'];
+
 foreach ($letters as $letter) {
   $upcase_letters[] = strtoupper($letter);
 }
 
-//var_dump($upcase_letters)
+if (isset($password_length)) {
+  var_dump($password_length, 'é valido ');
+}
+else{
+  $password_length = 0;
+  var_dump('non é stato ancora inserito un numero');
+}
+
+
+
+var_dump($password_length)
 ?>
 
 
