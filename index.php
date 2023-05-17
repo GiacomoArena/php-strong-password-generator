@@ -1,8 +1,8 @@
 <?php 
 
 $letters = range('a', 'z');
-$numbers = range(1, 100);
-$symbol = ['!','?','<','>','&','%','@','&',];
+$numbers = range('1', '9');
+$symbol = ['!','?','<','>','&','%','@','&'];
 $upcase_letters = [];
 
 $password_length = $_GET['number'];
@@ -19,9 +19,19 @@ else{
   var_dump('non é stato ancora inserito un numero');
 }
 
+function makePassword($letters,$numbers,$symbol,$upcase_letters,$password_length){
+  $password_generated = '';
 
+  while (strlen($password_generated)!= $password_length) {
+    $password_generated .= $letters[rand(1,25)] . $symbol[rand(1,7)] .$upcase_letters[rand(1,25)] . $numbers[rand(1,9)];
+    if (strlen($password_generated) > $password_length) {
+      $password_generated = substr($password_generated, 0, $password_length);
+    }
+  };
+  return $password_generated;
+}
+//var_dump($numbers[55]);
 
-var_dump($password_length)
 ?>
 
 
@@ -42,11 +52,12 @@ var_dump($password_length)
 
   <form action="index.php" method='GET'>
     <label for="quantity">Scegli la lunghezza della password:</label>
-    <input type="number" name='number' id="quantity" name="quantity" min="1" max="20">
+    <input type="number" name='number' id="quantity" name="quantity" min="5" max="20">
     <button type="submit" class="btn btn-success ms-3">Submit</button>
   </form>
 
-</div>
+  <h1> <?php echo makePassword($letters,$numbers,$symbol,$upcase_letters,$password_length) ?></h1>
+</div> 
 
 
 </body>
