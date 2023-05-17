@@ -1,8 +1,15 @@
 <?php 
 
+$letters = range('a', 'z');
+$numbers = range(1, 100);
+$symbol = ['!','?','<','>','&','%','@','&',];
+$upcase_letters = [];
 
+foreach ($letters as $letter) {
+  $upcase_letters[] = strtoupper($letter);
+}
 
-
+//var_dump($upcase_letters)
 ?>
 
 
@@ -21,9 +28,9 @@
   
 <div class="container my-5">
 
-  <form action="index.php">
+  <form action="index.php" method='GET'>
     <label for="quantity">Scegli la lunghezza della password:</label>
-    <input type="number" id="quantity" name="quantity" min="1" max="20">
+    <input type="number" name='number' id="quantity" name="quantity" min="1" max="20">
     <button type="submit" class="btn btn-success ms-3">Submit</button>
   </form>
 
